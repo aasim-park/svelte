@@ -19,16 +19,25 @@ pipeline {
     }
     stage('Start container') {
       steps {
-        sh 'docker-compose up -d --no-color --wait'
+        sh 'docker-compose up -d'
         sh 'docker ps'
       }
     }
+    // old start container script
+    // stage('Start container') {
+    //   steps {
+    //     sh 'docker-compose up -d --no-color --wait'
+    //     sh 'docker ps'
+    //   }
+    // }
+    //testing need to verify for jq
     // stage('Run tests against the container') {
     //   steps {
     //     sh 'curl http://localhost:3000/param?query=demo | jq'
     //   }
     // }
   }
+  //post to data container
   // post {
   //   always {
   //     sh 'docker-compose down --remove-orphans -v'
