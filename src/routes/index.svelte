@@ -1,4 +1,10 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-<p>Hii Vipul</p>
-<p>Hii Prathemesh</p>
+<h1 class="title">Welcome to my Homepage</h1>
+
+<style>
+	.title {
+		font: 30px;
+		text-align: center;
+		margin: 2px;
+		padding: 3px;
+	}
+</style>
