@@ -17,6 +17,11 @@ pipeline {
         sh 'docker system prune -a --volumes -f'
       }
     }
+    stage('Build a new image') {
+      steps {
+        sh 'docker-compose build'
+      }
+    }
     stage('Start container') {
       steps {
         sh 'docker-compose up -d'
