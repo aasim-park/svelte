@@ -1,5 +1,4 @@
 <script>
-	import Navbar from './navbar.svelte';
 </script>
 
 <h1 class="title">Welcome to my Homepage</h1>

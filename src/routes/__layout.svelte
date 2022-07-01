@@ -1,9 +1,16 @@
 <script>
-	import Navbar from './navbar.svelte';
+	import Footer from '$lib/footer.svelte';
+	import Navbar from '../lib/navbar.svelte';
 </script>
 
-<nav>
+<header>
 	<Navbar />
-</nav>
+</header>
 
-<slot />
+<main>
+	<slot />
+</main>
+
+<footer>
+	<Footer />
+</footer>

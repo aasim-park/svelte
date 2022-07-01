@@ -9,3 +9,18 @@ services:
     container_name: Svelte-App
     stdin_open: true
     tty: true
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+
+volumes:
+  mongodb_data_container:

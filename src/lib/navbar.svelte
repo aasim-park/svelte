@@ -1,4 +1,4 @@
-<div>
+<div class="container">
 	<div class="leftside">
 		<p class="text">
 			<a href="/">Home</a>
@@ -9,6 +9,9 @@
 </div>
 
 <style>
+	.container {
+		border-bottom: 3px solid gray;
+	}
 	.text {
 		font-size: 20px;
 	}
