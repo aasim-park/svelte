@@ -24,4 +24,4 @@
 {#each blogs as blog}
 	<div>{blog.name}</div>
 {/each}
-<p>This is blog page</p>
+
