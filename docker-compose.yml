@@ -22,11 +22,12 @@ services:
     volumes:
       - mongodb_data_container:/data/db
 
-mongo_express:
+  mongo_express:
     image: mongo-express
     ports:
       - 8081:8081
     depends_on:
       - mongo
+
 volumes:
   mongodb_data_container:
