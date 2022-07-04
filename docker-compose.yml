@@ -22,7 +22,7 @@ services:
     volumes:
       - mongodb_data_container:/data/db
 
-mongo-express:
+mongo_express:
     image: mongo-express
     ports:
       - 8081:8081
