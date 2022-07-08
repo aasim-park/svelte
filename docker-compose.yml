@@ -5,8 +5,10 @@ services:
       context: .
       dockerfile: Dockerfile.production
     ports:
-      - '3000:3000'
+      - 3000:3000
     container_name: Svelte-App
+    networks:
+      - frontend
     stdin_open: true
     tty: true
     depends_on:
@@ -15,19 +17,39 @@ services:
   mongo:
     image: mongo:latest
     environment:
-      MONGO_INITDB_ROOT_USERNAME: '$username'
-      MONGO_INITDB_ROOT_PASSWORD: '$password'
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=project
     ports:
       - 27017:27017
     volumes:
       - mongodb_data_container:/data/db
+    networks:
+      - frontend
 
-  mongo_express:
-    image: mongo-express
-    ports:
-      - 8081:8081
-    depends_on:
-      - mongo
+  # mongo_express:
+  #   image: mongo-express
+  #   environment:
+  #     - ME_CONFIG_MONGODB_SERVER=mongo
+  #     - ME_CONFIG_MONGODB_PORT=27017
+  #     # - ME_CONFIG_MONGODB_ENABLE_ADMIN=false
+  #     # - ME_CONFIG_MONGODB_AUTH_DATABASE=admin
+  #     - ME_CONFIG_MONGODB_AUTH_USERNAME=${MONGO_ROOT_USER}
+  #     - ME_CONFIG_MONGODB_AUTH_PASSWORD=${MONGO_ROOT_PASSWORD}
+  #     - ME_CONFIG_BASICAUTH_USERNAME=${MONGOEXPRESS_LOGIN}
+  #     - ME_CONFIG_BASICAUTH_PASSWORD=${MONGOEXPRESS_PASSWORD}
+  #   ports:
+  #     - 8081:8081
+  #   volumes:
+  #     - mongodb_data_container:/data/db
+  #   depends_on:
+  #     - mongo
+  #   networks:
+  #     - backend
 
 volumes:
   mongodb_data_container:
+
+networks:
+  frontend:
+    driver: bridge
